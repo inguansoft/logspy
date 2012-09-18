@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <title>logspy - What you want to see</title>
+    <link href="journal.css" media="all" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+
+    <div class="filter_container">
+      <div class="filter_input">
+	<div>Keep Lines:</div>
+	<textarea class="filter_input_textbox" id="keep"></textarea>
+      </div>
+      <div class="filter_input">
+	<div>Flush Lines:</div>
+	<textarea class="filter_input_textbox" id="flush"></textarea>
+      </div>
+      <div class="filter_input">
+	<div>Change Strings:</div>
+	<textarea class="filter_input_textbox" id="change_string"></textarea>
+      </div>
+    </div>
+
+    <div class="result">
+      <div>What you want to see:</div>
+      <div id="result">
+	Welcome to the jungle!
+      </div>
+    </div>
+
+    <div class="input">
+      <div>What you have:</div>
+      <textarea class="input_textarea" id="main-content"></textarea>
+    </div>
+
+
+
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="journal.js" type="text/javascript"></script>
+
+  </body>
+</html>
+
+
