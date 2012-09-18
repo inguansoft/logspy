@@ -1,0 +1,60 @@
+
+.result {
+    float: right;
+    width: 70%;
+    line-height: 20px;
+    font-size: 18px;
+}
+
+.controls {}
+
+.filter_container {
+    width: 100%;
+    height: 100px;
+    line-height: 20px;
+}
+
+.filter_input {
+    width: 33%;
+    float:left;
+}
+
+.filter_input_textbox {
+    resize: none;
+    width: 95%;
+    height: 100px;
+}
+
+.input {
+    width: 28%;
+    height: 900px;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+.input_textarea {
+    width: 100%;
+    height: 100%;
+    line-height: 20px;
+    resize: none;
+}
+
+.row_container {
+    width: 100%;
+    height: 20px;
+}
+
+.row_number_label {
+    float: left;
+    width: 40px;
+    text-align: right;
+    font-size: 8px;
+}
+
+.row_controls {
+    float: right;
+}
+
+.row_line {
+
+}
