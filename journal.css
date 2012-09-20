@@ -1,5 +1,7 @@
-.header {}
-
+body {
+    margin: 0;
+    width: 100%;
+}
 .reference{
     float: right;
     margin: 5px 20px 0 0;
@@ -30,6 +32,7 @@
     width: 100%;
     height: 100px;
     line-height: 20px;
+    margin-left: 5px;
 }
 
 .filter_input {
@@ -39,6 +42,7 @@
 
 .filter_input_label_container {
     margin-right: 15px;
+    height: 26px;
 }
 
 .filter_input_textbox {
@@ -62,12 +66,30 @@
 }
 
 .desktop {
-    padding-top: 10px;
+    padding: 10px 0 0 5px;
     clear: both;
 }
 
-.header {
+.top_header {
+    padding: 0 0 10px 10px;
     font-weight: bold;
+
+background-image: linear-gradient(top, rgb(179,179,179) 4%, rgb(255,255,255) 52%);
+background-image: -o-linear-gradient(top, rgb(179,179,179) 4%, rgb(255,255,255) 52%);
+background-image: -moz-linear-gradient(top, rgb(179,179,179) 4%, rgb(255,255,255) 52%);
+background-image: -webkit-linear-gradient(top, rgb(179,179,179) 4%, rgb(255,255,255) 52%);
+background-image: -ms-linear-gradient(top, rgb(179,179,179) 4%, rgb(255,255,255) 52%);
+
+background-image: -webkit-gradient(
+	linear,
+	left top,
+	left bottom,
+	color-stop(0.04, rgb(179,179,179)),
+	color-stop(0.52, rgb(255,255,255))
+);    
+
+
+
 }
 
 .row_container {

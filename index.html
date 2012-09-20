@@ -4,10 +4,10 @@
     <link href="journal.css" media="all" rel="stylesheet" type="text/css">
   </head>
   <body>
-    <div class="header">
+    <div class="top_header">
       <div class="reference"><a href="http://www.inguansoft.com">tool overview</a></div>
       <span class="main_title">logSpy</span>
-      <span class="author">by <a href="http://www.inguansoft.com">inguansoft.com</a></span></div>
+      <span class="author">by <a href="http://www.inguansoft.com">inguansoft.com</a></span>
     </div>
     <div class="filter_container">
       <div class="filter_input">
@@ -19,15 +19,15 @@
 	<textarea class="filter_input_textbox" id="keep"></textarea>
       </div>
       <div class="filter_input">
-	<div>Flush Lines:</div>
+	<div class="filter_input_label_container">Flush Lines:</div>
 	<textarea class="filter_input_textbox" id="flush"></textarea>
       </div>
       <div class="filter_input">
-	<div class="coming_soon">Remove Expressions: coming soon!!!</div>
+	<div class="filter_input_label_container coming_soon">Remove Expressions: coming soon!!!</div>
 	<textarea class="filter_input_textbox" id="remove_string" disabled="disabled"></textarea>
       </div>
       <div class="filter_input">
-	<div class="coming_soon">Highlight Expressions: coming soon!!!</div>
+	<div class="filter_input_label_container coming_soon">Highlight Expressions: coming soon!!!</div>
 	<textarea class="filter_input_textbox" id="highlight_string" disabled="disabled"></textarea>
       </div>
     </div>
@@ -45,7 +45,6 @@
 	<textarea class="input_textarea" id="main-content"></textarea>
       </div>
     </div>
-
 
     <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
     <script src="journal.js" type="text/javascript"></script>
