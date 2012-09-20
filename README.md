@@ -5,7 +5,7 @@ Goal:
 Strategy:
  Start with a front end concept and start growing functionality with backend support
  Functionality to build:
-   * blur
+   DONE blur
    * change text
    * build back end with member
    * manage logs
