@@ -39,9 +39,20 @@
     resize: none;
 }
 
+.desktop {
+    padding-top: 10px;
+    clear: both;
+}
+
+.header {
+    font-weight: bold;
+}
+
 .row_container {
     width: 100%;
     height: 20px;
+    overflow: scroll;
+    white-space: nowrap;;
 }
 
 .row_number_label {
@@ -56,5 +67,37 @@
 }
 
 .row_line {
+    overflow: show;
+}
+
+.blur-area-input {
+    float: right;
+    margin-right: 20px;
+    padding: 1px 5px 1px 5px;
+}
+.blur-area-input input {
+    width: 40px;
+    margin-left: 5px;
+}
+
+.blur-area-input.top_input {
+    background: #E0F2F7;
+}
+.blur-area-input.bottom_input {
+    background: #F7F8E0;
+}
+
+.blur_top {
+    background: #E0F2F7;
+}
+.blur_bottom {
+    background: #F7F8E0;
+}
+
+.blur_top.blur_bottom {
+    background: #F6CEF5;
+}
+
+.label-input {
 
 }

@@ -7,7 +7,11 @@
 
     <div class="filter_container">
       <div class="filter_input">
-	<div>Keep Lines:</div>
+	<div>
+	  <div class="blur-area-input bottom_input">blur bottom:<input id="keep_blur_input_bottom" type="text"/></div>
+	  <div class="blur-area-input top_input">blur top:<input id="keep_blur_input_top" type="text"/></div>
+	  <div class="label-input">Keep lines:</div>
+	</div>
 	<textarea class="filter_input_textbox" id="keep"></textarea>
       </div>
       <div class="filter_input">
@@ -20,18 +24,19 @@
       </div>
     </div>
 
-    <div class="result">
-      <div>What you want to see:</div>
-      <div id="result">
-	Welcome to the jungle!
+    <div class="desktop">
+      <div class="result">
+	<div class="header">What you want to see:</div>
+	<div id="result">
+	  Welcome to the jungle!
+	</div>
+      </div>
+      
+      <div class="input">
+	<div class="header">What you have:</div>
+	<textarea class="input_textarea" id="main-content"></textarea>
       </div>
     </div>
-
-    <div class="input">
-      <div>What you have:</div>
-      <textarea class="input_textarea" id="main-content"></textarea>
-    </div>
-
 
 
     <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
