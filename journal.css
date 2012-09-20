@@ -8,6 +8,11 @@
 
 .controls {}
 
+.coming_soon {
+    font-style: italic;
+    color: gray;
+}
+
 .filter_container {
     width: 100%;
     height: 100px;
@@ -15,8 +20,12 @@
 }
 
 .filter_input {
-    width: 33%;
+    width: 25%;
     float:left;
+}
+
+.filter_input_label_container {
+    margin-right: 15px;
 }
 
 .filter_input_textbox {
@@ -72,12 +81,11 @@
 
 .blur-area-input {
     float: right;
-    margin-right: 20px;
     padding: 1px 5px 1px 5px;
 }
 .blur-area-input input {
-    width: 40px;
-    margin-left: 5px;
+    width: 30px;
+    margin-left: 3px;
 }
 
 .blur-area-input.top_input {
@@ -85,6 +93,9 @@
 }
 .blur-area-input.bottom_input {
     background: #F7F8E0;
+}
+.should_hide {
+    background: #6E6E6E!important;
 }
 
 .blur_top {

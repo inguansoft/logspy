@@ -1,23 +1,27 @@
 
 $(function(){
-    var _buffer = [], _keep, _flush, _change_string,
+    var _buffer = [], _keep, _flush, _remove_string, _highlight_string,
     _result_container=$("#result"), _size,
     _blur_top=0, _blur_bottom=0,
     _process_line = function(content){
 	return content.replace(/ /g, '&nbsp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     },
     _process_buffer = function(){
-	var i, j=0,k=0, delta, last_match_line;
+	var i, j=0,k=0, delta, last_match_line, flush_flag;
 	for(i=0;i<_size;i++){
-	    if((typeof(_keep) === 'object' && _keep !== null && !_keep.test(_buffer[i])) ||
-	       (typeof(_flush) === 'object' && _flush !== null && _flush.test(_buffer[i]))) {
+	    flush_flag = (typeof(_flush) === 'object' && _flush !== null && _flush.test(_buffer[i]));
+	    if(typeof(_keep) === 'object' && _keep !== null && !_keep.test(_buffer[i]) || flush_flag) {
+		if(flush_flag) {
+		    $("#_r_" + i).addClass("should_hide");
+		}
 		if(k>0) { 
-		    k--; } else {
-			$("#_r_" + i).hide();
-		    }
+		    k--;
+		} else {
+		    $("#_r_" + i).hide();
+		}		
 	    } else {
 		$("#_r_" + i).show();
-		$("#_r_" + i).removeClass("blur_top").removeClass("blur_bottom").removeClass("blur_top");
+		$("#_r_" + i).removeClass("blur_top").removeClass("blur_bottom").removeClass("blur_top").removeClass("should_hide");
 		j=0;
 		while(j<_blur_top) {		    
 		    j++;
@@ -76,19 +80,21 @@ $(function(){
     _temp_handler = function(){
 	var keep = $("#keep").val().replace(/[\n\r]/g, "|").replace(/[\|]+/g,'|').replace(/\|$/g,'').replace(/^\|/g,''),
 	flush = $("#flush").val().replace(/[\n\r]/g, "|").replace(/[\|]+/g,'|').replace(/\|$/g,'').replace(/^\|/g,''),
-	change_string = $("#change_string").val().split(/[\n\r]/);
+	remove_string = $("#remove_string").val().replace(/[\n\r]/g, "|").replace(/[\|]+/g,'|').replace(/\|$/g,'').replace(/^\|/g,''),
+	highlight_string = $("#highlight_string").val().replace(/[\n\r]/g, "|").replace(/[\|]+/g,'|').replace(/\|$/g,'').replace(/^\|/g,'');
 
 	_keep = (typeof(keep) === 'string' && keep.length >0)?new RegExp(keep) : null;
 	_flush = (typeof(flush) === 'string' && flush.length >0)?new RegExp(flush) : null;
 
+	_remove_string = (typeof(remove_string) === 'string' && remove_string.length >0)?new RegExp(remove_string) : null;
+	_highlight_string = (typeof(highlight_string) === 'string' && highlight_string.length >0)?new RegExp(highlight_string) : null;
+
 	_blur_top = parseInt($("#keep_blur_input_top").val()) || 0;
 	_blur_bottom = parseInt($("#keep_blur_input_bottom").val()) || 0;
 
-	_change_string = change_string;
 	_process_buffer();
     };
 
     $("#main-content").bind("keyup",null, _global_handler);
-    $("#keep, #flush, #keep_blur_input_top, #keep_blur_input_bottom").bind("keyup", null, _temp_handler);
-    $("#change_string").bind("keyup", null, function(){});
+    $("#remove_string, #highlight_string, #keep, #flush, #keep_blur_input_top, #keep_blur_input_bottom").bind("keyup", null, _temp_handler);
 });
