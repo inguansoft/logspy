@@ -1,3 +1,16 @@
+.header {}
+
+.reference{
+    float: right;
+    margin: 5px 20px 0 0;
+}
+.main_title{
+    font-family: Arial;
+    font-size: 30px;
+}
+.author {
+    font-size: 12px;
+}
 
 .result {
     float: right;
