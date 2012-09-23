@@ -3,6 +3,9 @@ $(function(){
     var _buffer = [], _keep, _flush, _remove_string, _highlight_string,
     _result_container=$("#result"), _size,
     _blur_top=0, _blur_bottom=0,
+    _adapt_height = function() {
+	$('#result').height(($(window).height() -200).toString()+ "px");
+    },
     _process_line = function(content){
 	return content.replace(/ /g, '&nbsp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     },
@@ -95,6 +98,34 @@ $(function(){
 	_process_buffer();
     };
 
+    _adapt_height();
     $("#main-content").bind("keyup",null, _global_handler);
     $("#remove_string, #highlight_string, #keep, #flush, #keep_blur_input_top, #keep_blur_input_bottom").bind("keyup", null, _temp_handler);
+    $(window).bind("resize", _adapt_height);
+
+ 	try {
+     var ws = new WebSocket("ws://localhost:3003");
+     
+     ws.onopen = function() {
+     };
+     ws.onmessage = function (evt) 
+     { 
+        var received_msg = evt.data;
+        alert(received_msg);
+     };
+     ws.onclose = function()
+     { 
+        alert("Connection is closed..."); 
+     };   
+    ws.onerror = function(evt) {
+    	var received_msg = evt.data;
+        alert(received_msg);
+    };
+    
+    
+  } catch (exc) {
+  		alert(exc);
+  }
+    
+    
 });

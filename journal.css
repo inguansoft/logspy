@@ -66,8 +66,13 @@ body {
 }
 
 .desktop {
-    padding: 10px 0 0 5px;
+    padding: 10px 5px 0 5px;
     clear: both;
+}
+
+.desktop #result {
+    border: 1px solid black;
+    padding: 5px;
 }
 
 .top_header {
