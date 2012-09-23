@@ -1,3 +1,99 @@
+var Connect = function() { 
+	var _ws = new WebSocket("ws://localhost:3003"),
+	_callback_message, _callback_open, _callback_close, _callback_error;
+
+    _ws.onopen = function() {
+     	if(typeof(_callback_open) === 'function') {
+     	    _callback_open();
+     	}
+    };
+    _ws.onmessage = function (evt) 
+    { 
+     	if(typeof(_callback_message) === 'function') {
+            _callback_message(evt.data);
+        }
+    };
+    _ws.onclose = function()
+    { 
+     	if(typeof(_callback_close) === 'function') {
+            _callback_close();
+        }
+    };   
+    _ws.onerror = function(evt) {
+    	if(typeof(_callback_error) === 'function') {
+    	    _callback_error(evt.data);
+    	}
+    };
+    return {
+	send: function(message) {
+	    _ws.send(message);
+	},
+	set_callback_message: function(call_back) {
+	    _callback_message = call_back;	
+	},
+	set_callback_open: function(call_back) {
+	    _callback_open = call_back;	
+	},
+	set_callback_close: function(call_back) {
+	    _callback_close = call_back;	
+	},
+	set_callback_error: function(call_back) {
+	    _callback_error = call_back;	
+	}
+    };
+}(),
+
+App = function() {
+	var _process_line = function(content){
+	return content.replace(/ /g, '&nbsp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    },
+    _line_creator = function(message) {
+		line_container = $("<div/>", {
+		//"id": "_r_" + i,
+		"class" : "row_container"
+	   });
+	    
+	    $("<div/>", {
+		"class": "row_controls"
+	    }).appendTo(line_container);
+	    
+	    $("<div/>", {
+		"class": "row_number_label",
+		"text": '[00]'
+	    }).appendTo(line_container);
+
+	    $("<div/>", {
+		"class": "row_line",
+		"html": _process_line(message)
+	    }).appendTo(line_container);
+		return line_container;
+	};
+	
+	
+	Connect.set_callback_open(function(){
+	    var element = $("#main_message");
+	    element.html("pipe ON");
+	    element.removeClass("_off");
+	    element.addClass("_on");
+	});
+	Connect.set_callback_close(function(){
+	    var element = $("#main_message");
+	    element.html("pipe OFF");
+	    element.removeClass("_on");
+	    element.addClass("_off");
+	});
+	Connect.set_callback_message(function(message){
+	    var element = $("#result");
+	    _line_creator(message).appendTo(element);
+	});
+	return {};
+}();
+
+
+
+
+
+
 
 $(function(){
     var _buffer = [], _keep, _flush, _remove_string, _highlight_string,
@@ -102,30 +198,4 @@ $(function(){
     $("#main-content").bind("keyup",null, _global_handler);
     $("#remove_string, #highlight_string, #keep, #flush, #keep_blur_input_top, #keep_blur_input_bottom").bind("keyup", null, _temp_handler);
     $(window).bind("resize", _adapt_height);
-
- 	try {
-     var ws = new WebSocket("ws://localhost:3003");
-     
-     ws.onopen = function() {
-     };
-     ws.onmessage = function (evt) 
-     { 
-        var received_msg = evt.data;
-        alert(received_msg);
-     };
-     ws.onclose = function()
-     { 
-        alert("Connection is closed..."); 
-     };   
-    ws.onerror = function(evt) {
-    	var received_msg = evt.data;
-        alert(received_msg);
-    };
-    
-    
-  } catch (exc) {
-  		alert(exc);
-  }
-    
-    
 });
