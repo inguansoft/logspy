@@ -1,3 +1,9 @@
+//Javascript app to present logs customize for your needs  logspy
+//author: inguansoft.com
+//github: https://github.com/inguansoft/logspy
+//app running at: http://logspy.inguansoft.com
+//more about the app at: www.inguansoft.com
+
 var Connect = function() { 
 	var _ws = new WebSocket("ws://localhost:3003"),
 	_callback_message, _callback_open, _callback_close, _callback_error;
