@@ -184,6 +184,6 @@ $(function(){
 	$('#result').height(($(window).height() -200).toString()+ "px");
     };
     $("#remove_string, #highlight_string, #keep, #flush, #keep_blur_input_top, #keep_blur_input_bottom").bind("keyup", null, Logspy.Filter.onFilterChange);
-
+    _adapt_height();
     $(window).bind("resize", _adapt_height);
 });
