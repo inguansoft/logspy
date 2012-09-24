@@ -3,7 +3,7 @@
 #examples to connect with ruby script
 #/usr/bin/tail -f ~/git/mariana/log/development.log | ruby ./logspy.rb
 #tail -f ~/git/mariana/log/ < ~/projects/web/mc/log/development.log
-
+require 'rubygems'
 require 'em-websocket'
 @socket=nil
 @resource = ConditionVariable.new
